@@ -1,0 +1,650 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+}
+
+body {
+    background-image: url("../image/kv.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: scroll;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+body.no-background {
+    background-image: none;
+    background-color: #fff;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1A48A6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    min-height: 56px;
+    z-index: 10;
+}
+
+.title {
+    text-align: center;
+    font-size: 4.0rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 56px;
+    width: 100%;
+    min-height: calc(100vh - 56px);
+}
+
+.title p {
+    margin: 0;
+    white-space: nowrap;
+}
+
+footer {
+    background-color: white;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 20px 20px;
+    margin-top: auto;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+footer.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.footer-service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+.section-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.nav-item {
+    margin: 0;
+    color: white;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-item a:hover {
+    opacity: 0.5;
+}
+
+header .menu-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header .menu-group div {
+    margin-left: 0;
+}
+
+.service-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.service-items div {
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.service-items div p {
+    margin: 0;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.service-items .WEB {
+    background-color: #b3ffff;
+}
+
+.service-items .WEB:not(:hover):not(:focus) {
+    background-color: #b3ffff;
+}
+
+.service-items .WEB.web-white {
+    background-color: #ffffff !important;
+}
+
+.service-items .smart {
+    background-color: #ffffff;
+}
+
+.service-items .smart:not(:hover):not(:focus) {
+    background-color: #ffffff;
+}
+
+.service-items .smart:hover,
+.service-items .smart:focus {
+    background-color: #a7ff99;
+}
+
+.service-items .smart.smart-clicked {
+    background-color: #a7ff99 !important;
+}
+
+.service-items .SEO:hover,
+.service-items .SEO:focus {
+    background-color: #ffdea0;
+}
+
+.service-items .SEO:not(:hover):not(:focus) {
+    background-color: transparent;
+}
+
+.WEBseisaku {
+    border: 1px solid black;
+    width: 100%;
+    max-width: 600px;
+    min-width: 200px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.WEBseisaku p {
+    margin: 0;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    max-width: 100%;
+    white-space: normal;
+    font-size: 1rem;
+}
+
+.dammy {
+    text-align: center;
+    padding-left: 50px;
+    margin-right: auto;
+}
+
+.about-sentence {
+    margin-bottom: 20px;
+}
+
+.about-sentence p {
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.delivery {
+    background: linear-gradient(to bottom, transparent 0%, transparent calc(100% - 4px), orange calc(100% - 4px), orange 100%);
+    position: relative;
+    bottom: -2px;
+    line-height: 1;
+    padding-bottom: 4px;
+    display: inline-block;
+ 
+}
+
+.menu-btn {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-icon .navicon {
+    background: white;
+    display: block;
+    height: 3px;
+    width: 24px;
+    position: relative;
+    transition: background 0.2s ease-out;
+}
+
+.menu-icon .navicon::before,
+.menu-icon .navicon::after {
+    background: white;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+}
+
+.menu-icon .navicon::before {
+    top: 8px;
+}
+
+.menu-icon .navicon::after {
+    top: -8px;
+}
+
+.menu-btn:checked~.menu-group {
+    display: flex;
+}
+
+.menu-btn:checked~.menu-icon .navicon {
+    background: transparent;
+}
+
+.menu-btn:checked~.menu-icon .navicon::before {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.menu-btn:checked~.menu-icon .navicon::after {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.contact-form {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.contact-form p {
+    margin: 0;
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+.form-group {
+    margin: 15px 0;
+    text-align: left;
+    max-width: 100%;
+}
+
+.label-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+.form-group .required {
+    color: red;
+    font-size: 0.9rem;
+}
+
+.form-group .optional {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: rgb(160, 157, 157);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+    background-color: rgb(228, 226, 226);
+}
+
+/* 画面幅755px以下 */
+@media (max-width: 755px) {
+    body {
+        background-size: cover;
+    }
+
+    header {
+        padding: 10px 20px;
+    }
+
+    header .menu-group {
+        gap: 10px;
+    }
+
+    .nav-item {
+        font-size: 0.9rem;
+    }
+
+    .dammy {
+        padding-left: 30px;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-top: 50px;
+    }
+
+    .service-items {
+        gap: 15px;
+        margin-top: 8px;
+    }
+
+    .service-items div {
+        width: 120px;
+        padding: 10px;
+    }
+
+    .service-items div p {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.0rem;
+    }
+
+    .about-sentence {
+        margin-bottom: 15px;
+    }
+
+    .about-sentence p {
+        font-size: 1.0rem;
+    }
+
+    .contact-form p {
+        font-size: 1.0rem;
+    }
+
+    footer {
+        padding: 0 10px 10px;
+    }
+
+    .WEBseisaku {
+        max-width: 454px;
+        padding: 8px;
+    }
+
+    .WEBseisaku p {
+        font-size: 0.9rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group .required,
+    .form-group .optional {
+        font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .submit-btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+/* 画面幅600px以下 */
+@media (max-width: 600px) {
+    body {
+        background-size: cover;
+    }
+
+    header {
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .dammy {
+        text-align: left;
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    header .menu-group {
+        display: none;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #308ce24d;
+        padding: 20px;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+    }
+
+    .menu-btn:checked ~ .menu-group {
+        transform: translateY(0);
+    }
+
+    .menu-group div {
+        margin: 10px 0;
+    }
+
+    .nav-item {
+        font-size: 0.9rem;
+    }
+
+    .menu-icon {
+        display: inline-block;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-top: 56px;
+    }
+
+    .footer-service {
+        width: 90%;
+        max-width: 200px;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+
+    .service-items {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 8px;
+        width: 100%;
+    }
+
+    .service-items div {
+        width: 100%;
+        max-width: 200px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .WEBseisaku {
+        width: 100%;
+        max-width: 200px;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+
+    .WEBseisaku p {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.0rem;
+    }
+
+    .about-sentence {
+        margin-bottom: 15px;
+    }
+
+    .about-sentence p {
+        font-size: 1.0rem;
+    }
+
+    .contact-form p {
+        font-size: 1.0rem;
+    }
+
+    .contact-form {
+        max-width: 90%;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.9rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* 画面幅350px以下 */
+@media (max-width: 350px) {
+    body {
+        background-size: cover;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 8px 20px;
+    }
+
+    .dammy {
+        text-align: left;
+    }
+
+    .nav-item {
+        font-size: 0.8rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+        margin-top: 40px;
+    }
+
+    .service-items {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-top: 6px;
+    }
+
+    .service-items div {
+        width: 90%;
+        max-width: 180px;
+        padding: 8px;
+    }
+
+    .service-items div p {
+        font-size: 0.8rem;
+    }
+
+    .section-title {
+        font-size: 0.8rem;
+    }
+
+    .about-sentence {
+        margin-bottom: 10px;
+    }
+
+    .about-sentence p {
+        font-size: 0.8rem;
+    }
+
+    .contact-form p {
+        font-size: 0.8rem;
+    }
+
+    footer {
+        padding: 0 8px 8px;
+    }
+
+    .WEBseisaku {
+        max-width: 95%;
+        padding: 6px;
+    }
+
+    .WEBseisaku p {
+        font-size: 0.8rem;
+    }
+
+    .form-group label {
+        font-size: 0.8rem;
+    }
+
+    .form-group .required,
+    .form-group .optional {
+        font-size: 0.7rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+
+    .submit-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
