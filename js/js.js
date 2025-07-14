@@ -62,7 +62,7 @@ $(document).ready(function() {
     $(window).on('load hashchange', scrollToAnchor);
     scrollToAnchor();
 
-    $('.service > p > a, .qa > p > a, .company > p > a').on('click', function(e) {
+    $('.nav-item').on('click', function(e) {
         const href = $(this).attr('href');
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         const [page, targetId] = href.split('#');
@@ -88,32 +88,25 @@ $(document).ready(function() {
         }
     });
 
-    $('.service-items div').on('click touchstart', function(e) {
-        e.preventDefault();
+$('.service-items div').on('click touchstart', function(e) {
+    e.preventDefault();
+    const $this = $(this);
+
+    $('.service-items div').removeClass('selected');
+
+    $this.addClass('selected');
+
+    $('.WEBseisaku p').text($this.find('p').text());
+
+    $('.service-items div').css('background-color', '');
+});
+
+    $('.WEB').addClass('selected');
+
+    $('#phone').on('input', function() {
         const $this = $(this);
-        
-        if ($this.hasClass('WEB')) {
-            $('.service-items div').removeClass('smart-clicked seo-clicked');
-            $('.WEB').removeClass('web-white');
-        } else if ($this.hasClass('SEO')) {
-            $('.service-items div').removeClass('smart-clicked seo-clicked');
-            $this.addClass('seo-clicked');
-            $('.WEB').addClass('web-white');
-        } else if ($this.hasClass('smart')) {
-            $('.service-items div').removeClass('smart-clicked seo-clicked');
-            $this.addClass('smart-clicked');
-            $('.WEB').addClass('web-white');
-        }
-
-        $('.WEBseisaku p').text($this.find('p').text());
-
-        if (e.type === 'touchstart') {
-            const bgColor = $this.hasClass('WEB') ? '#b3ffff' :
-                           $this.hasClass('SEO') ? '#ffdea0' :
-                           $this.hasClass('smart') ? '#a7ff99' : '';
-            $this.css('background-color', bgColor);
-            setTimeout(() => $this.css('background-color', ''), 300);
-        }
+        const value = $this.val();
+        $this.val(value.replace(/[^0-9]/g, ''));
     });
 
     $('.submit-btn').on('click', function() {
@@ -133,6 +126,15 @@ $(document).ready(function() {
             alert('正しいメールアドレス形式で入力してください（例：user@domain.com）。');
             $('#email').focus();
             return;
+        }
+
+        if (phone) {
+            const phoneRegex = /^\d{10,11}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('電話番号は10桁または11桁の数字で入力してください（例：09012345678）。');
+                $('#phone').focus();
+                return;
+            }
         }
 
         console.log('フォームデータ:', { name, prefecture, city, email, phone });

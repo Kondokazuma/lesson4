@@ -40,6 +40,58 @@ header {
     z-index: 10;
 }
 
+header .menu-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #1A48A6;
+}
+
+.dammy {
+    text-align: center;
+    padding-left: 50px;
+    margin-right: auto;
+    border-right: none;
+}
+
+.dammy a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.dammy a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.company,
+.service,
+.qa {
+    width: auto;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 15px 10px;
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 54px;
+    white-space: nowrap;
+    line-height: 1.8;
+}
+
+.nav-item:hover {
+    opacity: 0.5;
+}
+
 .title {
     text-align: center;
     font-size: 4.0rem;
@@ -49,12 +101,16 @@ header {
     justify-content: center;
     margin-top: 56px;
     width: 100%;
+    max-width: 100%;
     min-height: calc(100vh - 56px);
+    padding: 0 30px;
+    box-sizing: border-box;
 }
 
 .title p {
     margin: 0;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
 footer {
@@ -92,32 +148,6 @@ footer.visible {
     white-space: nowrap;
 }
 
-.nav-item {
-    margin: 0;
-    color: white;
-    font-size: 1.2rem;
-    white-space: nowrap;
-}
-
-.nav-item a {
-    color: white;
-    text-decoration: none;
-}
-
-.nav-item a:hover {
-    opacity: 0.5;
-}
-
-header .menu-group {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-header .menu-group div {
-    margin-left: 0;
-}
-
 .service-items {
     display: flex;
     justify-content: center;
@@ -132,6 +162,8 @@ header .menu-group div {
     width: 150px;
     text-align: center;
     transition: background-color 0.3s ease;
+    cursor: pointer;
+    background-color: #ffffff;
 }
 
 .service-items div p {
@@ -140,42 +172,32 @@ header .menu-group div {
     white-space: nowrap;
 }
 
-.service-items .WEB {
+.service-items .WEB.selected {
     background-color: #b3ffff;
 }
 
-.service-items .WEB:not(:hover):not(:focus) {
-    background-color: #b3ffff;
-}
-
-.service-items .WEB.web-white {
-    background-color: #ffffff !important;
-}
-
-.service-items .smart {
-    background-color: #ffffff;
-}
-
-.service-items .smart:not(:hover):not(:focus) {
-    background-color: #ffffff;
-}
-
-.service-items .smart:hover,
-.service-items .smart:focus {
+.service-items .smart.selected {
     background-color: #a7ff99;
 }
 
-.service-items .smart.smart-clicked {
-    background-color: #a7ff99 !important;
-}
-
-.service-items .SEO:hover,
-.service-items .SEO:focus {
+.service-items .SEO.selected {
     background-color: #ffdea0;
 }
 
-.service-items .SEO:not(:hover):not(:focus) {
-    background-color: transparent;
+
+.service-items .WEB:not(.selected):hover,
+.service-items .WEB:not(.selected):focus {
+    background-color: #a0dede;
+}
+
+.service-items .smart:not(.selected):hover,
+.service-items .smart:not(.selected):focus {
+    background-color: #a7ff99;
+}
+
+.service-items .SEO:not(.selected):hover,
+.service-items .SEO:not(.selected):focus {
+    background-color: #ffdea0;
 }
 
 .WEBseisaku {
@@ -199,12 +221,6 @@ header .menu-group div {
     font-size: 1rem;
 }
 
-.dammy {
-    text-align: center;
-    padding-left: 50px;
-    margin-right: auto;
-}
-
 .about-sentence {
     margin-bottom: 20px;
 }
@@ -223,7 +239,6 @@ header .menu-group div {
     line-height: 1;
     padding-bottom: 4px;
     display: inline-block;
- 
 }
 
 .menu-btn {
@@ -367,6 +382,9 @@ header .menu-group div {
 
     .nav-item {
         font-size: 0.9rem;
+        padding: 10px 8px;
+        min-height: 46px;
+        line-height: 1.7;
     }
 
     .dammy {
@@ -375,7 +393,7 @@ header .menu-group div {
 
     .title {
         font-size: 2rem;
-        margin-top: 50px;
+        padding: 0 20px;
     }
 
     .service-items {
@@ -457,6 +475,7 @@ header .menu-group div {
         text-align: left;
         padding-left: 0;
         margin-left: 0;
+        border-right: none;
     }
 
     header .menu-group {
@@ -466,22 +485,32 @@ header .menu-group div {
         left: 0;
         width: 100%;
         flex-direction: column;
-        background-color: #308ce24d;
-        padding: 20px;
+        background-color: #1A48A6;
+        padding: 10px 0;
         transition: transform 0.3s ease-in-out;
         transform: translateY(-100%);
     }
 
     .menu-btn:checked ~ .menu-group {
+        display: flex;
         transform: translateY(0);
     }
 
     .menu-group div {
-        margin: 10px 0;
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .company .nav-item {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .nav-item {
-        font-size: 0.9rem;
+        font-size: 1rem;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        min-height: 56px;
+        line-height: 1.8;
     }
 
     .menu-icon {
@@ -490,7 +519,7 @@ header .menu-group div {
 
     .title {
         font-size: 1.5rem;
-        margin-top: 56px;
+        padding: 0 15px;
     }
 
     .footer-service {
@@ -558,6 +587,14 @@ header .menu-group div {
     }
 }
 
+/* 画面幅430px以下 */
+@media (max-width: 430px) {
+    .title {
+        font-size: 1.2rem;
+        padding: 0 10px;
+    }
+}
+
 /* 画面幅350px以下 */
 @media (max-width: 350px) {
     body {
@@ -575,11 +612,14 @@ header .menu-group div {
 
     .nav-item {
         font-size: 0.8rem;
+        padding: 12px 20px;
+        min-height: 48px;
+        line-height: 1.7;
     }
 
     .title {
-        font-size: 1.2rem;
-        margin-top: 40px;
+        font-size: 1rem;
+        padding: 0 8px;
     }
 
     .service-items {
