@@ -19,7 +19,7 @@ li {
     position: absolute;
     right: 32px;
     cursor: pointer;
-    width: 20px;
+    width: 30px;
     height: 20px;
     z-index: 10;
 }
@@ -32,6 +32,7 @@ li {
     background-color: white;
     width: 100%;
     z-index: 10;
+    box-sizing: border-box;
 }
 
 .hamburger span:nth-of-type(1) {
@@ -74,6 +75,7 @@ header {
     padding: 12px 0;
     transition: 0.3s;
     overflow: visible;
+    z-index: 100;
 }
 
 .header_content {
@@ -119,6 +121,7 @@ header {
     transform: translate(-50%, -50%);
     font-size: 60px;
     word-break: keep-all;
+    z-index: 1;
 }
 
 .kv2_content {
@@ -248,6 +251,7 @@ header {
         display: block;
     }
 
+
     .header_content ul {
         display: none;
         position: absolute;
@@ -284,7 +288,6 @@ header {
     .header_content a {
         font-size: 16px;
         margin-left: 20px;
-        margin-bottom: 10px;
     }
 
     li {
@@ -293,6 +296,19 @@ header {
         padding: 5px 0 5px;
     }
 
+    #header-menu.open {
+        border-top: 1px solid white;
+        /* 上ボーダーを維持 */
+        border-bottom: 1px solid white;
+        /* 下ボーダーを維持 */
+    }
+
+    #header-menu li {
+        border-top: none;
+        /* 既存の li の上ボーダーを削除 */
+        border-bottom: none;
+        /* li の下ボーダーも削除（ul のボーダーで統一） */
+    }
 
 }
 
@@ -331,7 +347,7 @@ header {
 }
 
 .form-group {
-    margin: 15px 0;
+    margin: 15px 16px;
     text-align: left;
     max-width: 100%;
 }

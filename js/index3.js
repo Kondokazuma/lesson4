@@ -1,3 +1,5 @@
+$(document).ready(function () {
+    // ページ読み込み時のハッシュリンク処理
     if (window.location.hash) {
         console.log("Hash detected on page load:", window.location.hash);
         var target = $(window.location.hash);
@@ -11,6 +13,7 @@
         }
     }
 
+    // サービス項目のタブ切り替え
     $(".service").click(function () {
         console.log("Service clicked:", $(this).attr("id"));
         let id = $(this).attr("id");
@@ -20,46 +23,77 @@
         $("#" + id + "_text").addClass("active");
     });
 
-    $('a[href^="#"]').click(function () {
+    // ハンバーガーメニューのトグル
+$("#hamburger").on("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("Hamburger clicked, current state:", $(this).hasClass("open") ? "open" : "closed");
+    const isOpen = $(this).toggleClass("open").hasClass("open");
+    $(this).attr("aria-expanded", isOpen);
+    if (isOpen) {
+        $("#header-menu").stop(true, true).addClass("open").slideDown(400, function () {
+            console.log("Menu opened, state: open");
+        });
+    } else {
+        $("#header-menu").stop(true, true).removeClass("open").slideUp(400, function () {
+            console.log("Menu closed, state: closed");
+        });
+    }
+});
+
+    // メニュー内のハッシュリンクの処理（メニューを閉じない）
+    $("#header-menu a[href^='#']").click(function (event) {
+        event.preventDefault(); // デフォルト動作を防止
         var href = $(this).attr("href");
-        console.log("Hash link clicked:", href);
+        console.log("Menu hash link clicked:", href);
         var target = $(href == "#" || href == "" ? "html" : href);
         if (target.length) {
             var speed = 800;
             var headerHeight = $("header").outerHeight() || 0;
             var position = target.offset().top - headerHeight;
             $("body,html").animate({ scrollTop: position }, speed, "swing");
-            $("#hamburger").removeClass("open");
-            $("#header-menu").removeClass("open").slideUp();
-            return false;
+            // メニューは閉じない（必要に応じて以下を有効化）
+            // if ($(window).width() <= 690) {
+            //     $("#hamburger").removeClass("open").attr("aria-expanded", false);
+            //     $("#header-menu").stop(true, true).removeClass("open").slideUp(400);
+            // }
+        } else {
+            console.log("Target not found for hash:", href);
         }
-        console.log("Target not found for hash:", href);
     });
 
-    $('a[href*="index3.html"]').click(function () {
+    // メニュー外のハッシュリンクの処理
+    $("a[href^='#']").not("#header-menu a").click(function (event) {
+        event.preventDefault();
         var href = $(this).attr("href");
-        console.log("Navigation link clicked:", href);
-        $("#hamburger").removeClass("open");
-        $("#header-menu").removeClass("open").slideUp();
+        console.log("Non-menu hash link clicked:", href);
+        var target = $(href == "#" || href == "" ? "html" : href);
+        if (target.length) {
+            var speed = 800;
+            var headerHeight = $("header").outerHeight() || 0;
+            var position = target.offset().top - headerHeight;
+            $("body,html").animate({ scrollTop: position }, speed, "swing");
+        } else {
+            console.log("Target not found for hash:", href);
+        }
     });
 
-    $('a.logo-link, a[href="index3.html"]').click(function () {
-        console.log("ダミーサイト link clicked:", $(this).attr("href"));
-        $("#hamburger").removeClass("open");
-        $("#header-menu").removeClass("open").slideUp();
+    // ナビゲーションリンク（index3.html）の処理
+    $('a[href*="index3.html"], a.logo-link, a[href="index3.html"]').click(function () {
+        console.log("Navigation or logo link clicked:", $(this).attr("href"));
+        if ($(window).width() <= 690) {
+            $("#hamburger").removeClass("open").attr("aria-expanded", false);
+            $("#header-menu").stop(true, true).removeClass("open").slideUp(400);
+        }
     });
 
-    $("#hamburger").on("click", function () {
-        console.log("Hamburger clicked");
-        $(this).toggleClass("open");
-        $("#header-menu").toggleClass("open").slideToggle();
-    });
-
+    // 電話番号の入力制限
     $("#phone").on("input", function () {
         const $this = $(this);
         $this.val($this.val().replace(/[^0-9]/g, ""));
     });
 
+    // フォーム送信処理
     $(".submit-btn").on("click", function () {
         const name = $("#name").val().trim();
         const prefecture = $("#prefecture").val();
@@ -100,6 +134,7 @@
         window.location.href = `thanks3.html?${queryParams}`;
     });
 
+    // 市区町村の動的更新
     const cityData = {
         北海道: [
             "札幌市", "函館市", "小樽市", "旭川市", "室蘭市", "釧路市", "帯広市", "北見市", "夕張市", "岩見沢市",
@@ -127,3 +162,9 @@
     }
 
     $("#prefecture").on("change", updateCities);
+
+    // デバッグ用：ドキュメント全体のクリックイベントを監視
+    $(document).on("click", function (event) {
+        console.log("Document clicked, target:", event.target);
+    });
+});
