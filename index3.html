@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/sytle3.css">
+</head>
+<body>
+    <header>
+        <div class="header_content">
+            <a href="index3.html" class="logo-link">ダミーサイト</a>
+            <ul id="header-menu">
+                <li><a href="#about">我が社について</a></li>
+                <li><a href="#service">サービス</a></li>
+                <li><a href="#contact-form">お問合せ</a></li>
+            </ul>
+            <div id="hamburger" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <div class="kv_content">
+        <p>ダミーサイトへようこそ</p>
+    </div>
+    <div class="service_main section" id="service">
+        <div class="about_content section" id="about">
+            <p class="service_title">我が社について</p>
+            <p class="about_text">TechEliteは、顧客に自信を持って<span>「納品」</span>ができるレベルのLPが作れるようになります。</p>
+        </div>
+        <p class="service_title">サービス</p>
+        <div class="service_content">
+            <p class="service active" id="web">WEB制作</p>
+            <p class="service" id="seo">SEOコンサル</p>
+            <p class="service" id="app">スマホアプリ開発</p>
+        </div>
+        <div class="description">
+            <p class="description_text active" id="web_text">
+                WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作WEB制作
+            </p>
+            <p class="description_text" id="seo_text">
+                SEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサルSEOコンサル
+            </p>
+            <p class="description_text" id="app_text">
+                スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発スマホアプリ開発
+            </p>
+        </div>
+    </div>
+    <div class="contact-form" id="contact-form">
+        <p class="section-title">お問い合わせ</p>
+        <div class="form-group">
+            <div class="label-wrapper">
+                <label for="name">お名前</label>
+                <span class="required">*必須</span>
+            </div>
+            <input type="text" id="name" name="name" required aria-required="true" placeholder="例）田中 太郎">
+        </div>
+        <div class="form-group">
+            <div class="label-wrapper">
+                <label for="prefecture">お住まいの都道府県</label>
+                <span class="required">*必須</span>
+            </div>
+            <select id="prefecture" name="prefecture" required aria-required="true">
+                <option value="">選択してください</option>
+                <option value="北海道">北海道</option>
+                <option value="青森県">青森県</option>
+                <option value="岩手県">岩手県</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="label-wrapper">
+                <label for="city">お住まいの市区町村</label>
+                <span class="required">*必須</span>
+            </div>
+            <select id="city" name="city" required aria-required="true">
+                <option value="">選択してください</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="label-wrapper">
+                <label for="email">メールアドレス</label>
+                <span class="required">*必須</span>
+            </div>
+            <input type="email" id="email" name="email" required aria-required="true" placeholder="例）abcd123@examle.com">
+        </div>
+        <div class="form-group">
+            <div class="label-wrapper">
+                <label for="phone">電話番号</label>
+                <span class="optional">任意</span>
+            </div>
+            <input type="tel" id="phone" name="phone" placeholder="例）09012345678">
+        </div>
+        <button type="button" class="submit-btn">送信</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./js/index3.js"></script>
+</body>
+</html>
