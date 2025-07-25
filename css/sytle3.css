@@ -366,6 +366,19 @@ header {
     max-width: 100%;
 }
 
+.submit-btn {
+    background-color: rgb(160, 157, 157);
+    color: black;
+    border: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 100%;
+    margin: 15px 16px;
+}
+
 .label-wrapper {
     display: flex;
     align-items: center;
@@ -407,8 +420,9 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%;
-    max-width: 568px;
-    margin: 10px auto;
+    max-width: calc(100% - 32px);
+    margin: 15px 16px;
+    box-sizing: border-box;
 }
 
 .submit-btn:hover,
