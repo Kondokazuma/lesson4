@@ -10,8 +10,6 @@ a {
 
 li {
     list-style: none;
-    /* border-top: 1px solid white;
-    border-bottom: 1px solid white; */
 }
 
 .hamburger {
@@ -26,12 +24,13 @@ li {
 
 .hamburger span {
     /*3本の線を作る*/
+    display: block;
     transition: all .3s;
     position: absolute;
     height: 2px;
     background-color: white;
     width: 100%;
-    z-index: 10;
+    /* z-index: 10; */
     box-sizing: border-box;
 }
 
@@ -48,6 +47,28 @@ li {
 .hamburger span:nth-of-type(3) {
     /*下の線の位置*/
     top: 12px;
+}
+
+/* .hamburger.open span{
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+} */
+
+/* open 時のハンバーガーメニューの span 要素に上下のボーダー */
+.hamburger.open span:nth-of-type(1),
+.hamburger.open span:nth-of-type(3) {
+    border-top: 1px solid white;
+    /* テスト用に赤（確認後 white に変更） */
+    border-bottom: 1px solid white;
+    /* テスト用に赤 */
+    width: 100%;
+    /* 全幅を明示 */
+}
+
+.hamburger.open span:nth-of-type(2) {
+    opacity: 0;
+    border: none;
+    /* 中央の span のボーダーを削除 */
 }
 
 .hamburger.open span:nth-of-type(1) {
@@ -244,25 +265,21 @@ header {
     }
 }
 
-
-
 @media screen and (max-width:690px) {
     .hamburger {
         display: block;
     }
 
-
     .header_content ul {
         display: none;
         position: absolute;
-        top: 100%;
+        top: 36px;
         left: 50%;
         transform: translateX(-50%);
         width: 100%;
         max-width: 690px;
         background-color: #1A48A6;
         flex-direction: column;
-        /* padding: 20px; */
         z-index: 9;
         text-align: center;
         justify-content: center;
@@ -271,11 +288,6 @@ header {
     .header_content ul.open {
         display: flex;
     }
-
-    /* .header_content ul li {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    } */
 
     .kv_content p {
         font-size: 40px;
@@ -292,24 +304,26 @@ header {
 
     li {
         list-style: none;
-        border-top: 1px solid white;
-        padding: 5px 0 5px;
+        /* border-top: 1px solid white; */
+        padding: 5px 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    #header-menu.open {
-        border-top: 1px solid white;
-        /* 上ボーダーを維持 */
+    #header-menu.open li {
+        /* border-top: 1px solid white; */
         border-bottom: 1px solid white;
-        /* 下ボーダーを維持 */
     }
 
-    #header-menu li {
-        border-top: none;
-        /* 既存の li の上ボーダーを削除 */
+    #header-menu.open li:first-child {
+        border-top: 1px solid white;
+        /* 最初の要素の上線を削除 */
+    }
+
+    #header-menu.open li:last-child {
         border-bottom: none;
-        /* li の下ボーダーも削除（ul のボーダーで統一） */
+        /* 最後の要素の下線を削除 */
     }
-
 }
 
 @media screen and (max-width:587px) {
@@ -387,13 +401,13 @@ header {
     background-color: rgb(160, 157, 157);
     color: black;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 0;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%;
-    max-width: 600px;
+    max-width: 568px;
     margin: 10px auto;
 }
 
