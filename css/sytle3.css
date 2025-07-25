@@ -20,6 +20,8 @@ li {
     width: 30px;
     height: 20px;
     z-index: 10;
+    top:50%;
+    transform: translateY(-50%);
 }
 
 .hamburger span {
@@ -73,8 +75,8 @@ li {
 
 .hamburger.open span:nth-of-type(1) {
     /*openのとき、上の線を右斜めにする*/
-    top: 1px;
-    transform: translateY(5px) rotate(-33deg);
+    top: 5px;
+    transform: translateY(4px) rotate(-33deg);
 }
 
 .hamburger.open span:nth-of-type(2) {
@@ -84,7 +86,7 @@ li {
 
 .hamburger.open span:nth-of-type(3) {
     /*下の線を左斜めにする*/
-    top: 12px;
+    top: 15px;
     transform: translateY(-6px) rotate(33deg);
 }
 
@@ -317,12 +319,10 @@ header {
 
     #header-menu.open li:first-child {
         border-top: 1px solid white;
-        /* 最初の要素の上線を削除 */
     }
 
     #header-menu.open li:last-child {
         border-bottom: none;
-        /* 最後の要素の下線を削除 */
     }
 }
 
