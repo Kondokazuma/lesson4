@@ -7,16 +7,17 @@ $(document).ready(function () {
             var speed = 800;
             var headerHeight = $("header").outerHeight() || 0;
             var position = target.offset().top - headerHeight;
+            console.log("Scrolling to position on load:", position, "Target:", target);
             $("body,html").animate({ scrollTop: position }, speed, "swing");
         } else {
-            console.log("Target not found for hash:", window.location.hash);
+            console.log("Target not found for hash on load:", window.location.hash);
         }
     }
 
     // サービス項目のタブ切り替え
     $(".service").click(function () {
-        console.log("Service clicked:", $(this).attr("id"));
-        let id = $(this).attr("id");
+        console.log("Service tab clicked:", $(this).attr("id"));
+        let id = $(this).attr("id").replace('-tab', '');
         $(".service").removeClass("active");
         $(this).addClass("active");
         $(".description_text").removeClass("active");
@@ -24,39 +25,40 @@ $(document).ready(function () {
     });
 
     // ハンバーガーメニューのトグル
-$("#hamburger").on("click", function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log("Hamburger clicked, current state:", $(this).hasClass("open") ? "open" : "closed");
-    const isOpen = $(this).toggleClass("open").hasClass("open");
-    $(this).attr("aria-expanded", isOpen);
-    if (isOpen) {
-        $("#header-menu").stop(true, true).addClass("open").slideDown(400, function () {
-            console.log("Menu opened, state: open");
-        });
-    } else {
-        $("#header-menu").stop(true, true).removeClass("open").slideUp(400, function () {
-            console.log("Menu closed, state: closed");
-        });
-    }
-});
+    $("#hamburger").on("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log("Hamburger clicked, current state:", $(this).hasClass("open") ? "open" : "closed");
+        const isOpen = $(this).toggleClass("open").hasClass("open");
+        $(this).attr("aria-expanded", isOpen);
+        if (isOpen) {
+            $("#header-menu").stop(true, true).addClass("open").slideDown(400, function () {
+                console.log("Menu opened, state: open");
+            });
+        } else {
+            $("#header-menu").stop(true, true).removeClass("open").slideUp(400, function () {
+                console.log("Menu closed, state: closed");
+            });
+        }
+    });
 
-    // メニュー内のハッシュリンクの処理（メニューを閉じない）
+    // メニュー内のハッシュリンクの処理
     $("#header-menu a[href^='#']").click(function (event) {
-        event.preventDefault(); // デフォルト動作を防止
+        event.preventDefault();
         var href = $(this).attr("href");
         console.log("Menu hash link clicked:", href);
         var target = $(href == "#" || href == "" ? "html" : href);
+        console.log("Target element:", target.length ? target : "Not found");
         if (target.length) {
             var speed = 800;
             var headerHeight = $("header").outerHeight() || 0;
             var position = target.offset().top - headerHeight;
+            console.log("Scrolling to position:", position, "Target:", target);
             $("body,html").animate({ scrollTop: position }, speed, "swing");
-            // メニューは閉じない（必要に応じて以下を有効化）
-            // if ($(window).width() <= 690) {
-            //     $("#hamburger").removeClass("open").attr("aria-expanded", false);
-            //     $("#header-menu").stop(true, true).removeClass("open").slideUp(400);
-            // }
+            if ($(window).width() <= 690) {
+                $("#hamburger").removeClass("open").attr("aria-expanded", false);
+                $("#header-menu").stop(true, true).removeClass("open").slideUp(400);
+            }
         } else {
             console.log("Target not found for hash:", href);
         }
@@ -72,6 +74,7 @@ $("#hamburger").on("click", function (event) {
             var speed = 800;
             var headerHeight = $("header").outerHeight() || 0;
             var position = target.offset().top - headerHeight;
+            console.log("Scrolling to position:", position, "Target:", target);
             $("body,html").animate({ scrollTop: position }, speed, "swing");
         } else {
             console.log("Target not found for hash:", href);
@@ -162,9 +165,4 @@ $("#hamburger").on("click", function (event) {
     }
 
     $("#prefecture").on("change", updateCities);
-
-    // デバッグ用：ドキュメント全体のクリックイベントを監視
-    $(document).on("click", function (event) {
-        console.log("Document clicked, target:", event.target);
-    });
 });
