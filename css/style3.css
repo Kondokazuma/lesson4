@@ -14,41 +14,23 @@ li {
 
 .hamburger {
     display: none;
-    position: absolute;
-    right: 32px;
     cursor: pointer;
     width: 30px;
-    height: 20px;
     z-index: 10;
-    top:50%;
-    transform: translateY(-50%);
+    margin-right: 32px;
 }
 
 .hamburger span {
     /*3本の線を作る*/
     display: block;
     transition: all .3s;
-    position: absolute;
     height: 2px;
     background-color: white;
-    width: 100%;
-    /* z-index: 10; */
-    box-sizing: border-box;
+    width: 100%;margin-bottom: 5px;
 }
 
-.hamburger span:nth-of-type(1) {
-    /*上の線の位置*/
-    top: 2px;
-}
-
-.hamburger span:nth-of-type(2) {
-    /*真ん中の線の位置*/
-    top: 7px;
-}
-
-.hamburger span:nth-of-type(3) {
-    /*下の線の位置*/
-    top: 12px;
+.hamburger span:last-of-type{
+    margin-bottom: 0;
 }
 
 /* open 時のハンバーガーメニューの span 要素に上下のボーダー */
@@ -67,8 +49,7 @@ li {
 
 .hamburger.open span:nth-of-type(1) {
     /*openのとき、上の線を右斜めにする*/
-    top: 5px;
-    transform: translateY(4px) rotate(-33deg);
+    transform: translateY(8px) rotate(-30deg);
 }
 
 .hamburger.open span:nth-of-type(2) {
@@ -78,8 +59,7 @@ li {
 
 .hamburger.open span:nth-of-type(3) {
     /*下の線を左斜めにする*/
-    top: 15px;
-    transform: translateY(-6px) rotate(33deg);
+    transform: translateY(-8px) rotate(30deg);
 }
 
 
@@ -87,22 +67,25 @@ header {
     background-color: #1A48A6;
     width: 100%;
     position: fixed;
-    padding: 12px 0;
+    /* padding: 12px 0; */
     transition: 0.3s;
     overflow: visible;
     z-index: 100;
+    display: flex;
+    align-items: center;
+    min-height: 60px
 }
 
 .header_content {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
     position: relative;
+    min-height: 60px
 }
 
-.header_content a {
+.header_content a.logo-link {
     font-size: 16px;
     margin-left: 20px;
 }
@@ -279,7 +262,7 @@ header {
     .header_content ul {
         display: none;
         position: absolute;
-        top: 36px;
+        top: 100%;
         left: 50%;
         transform: translateX(-50%);
         width: 100%;
@@ -306,6 +289,18 @@ header {
         padding: 12px 0;
         box-sizing: border-box;
         text-align: center;
+    }
+
+    #header-menu.open li {
+        border-bottom: 1px solid white;
+    }
+
+    #header-menu.open li:first-child {
+        border-top: 1px solid white;
+    }
+
+    #header-menu.open li:last-child {
+        border-bottom: none;
     }
 
     .kv_content p {
